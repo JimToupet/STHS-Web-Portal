@@ -1,0 +1,335 @@
+ul.teams {
+	list-style: none;
+	margin: 0px; padding: 0;
+	clear:both;
+	float:right;
+	height: 25px; /*--Height of image--*/
+}
+ul.teams li {
+	float: left;
+	margin: 0px; padding: 0px 2px;
+	text-align: center;
+	border: 0px
+	display: inline; /*--Gimp Fix aka IE6 Fix - Fixes double margin bug--*/
+}
+ul.teams li a.thumb {
+	width: 25px; /*--Width of image--*/
+	height: 25px; /*--Height of image--*/
+	padding: 0px;
+	border-bottom: 0px solid #ccc;
+	cursor: pointer;
+}
+ul.teams li span { /*--Used to crop image--*/
+	width: 25px;
+	height: 25px;
+	overflow: hidden;
+	display: block;
+}
+ul.teams li a.thumb:hover {
+	background: #333; /*--Hover effect for browser with js turned off--*/
+}
+ul.teams li a {text-decoration: none; color: #777; display: block;}
+
+ul.teams img
+{
+    opacity:0.4;
+    filter:alpha(opacity=40);
+}
+
+ul.onlineTeams {
+	list-style: none;
+	margin: 0px; padding: 0;
+	clear:both;
+	float:right;
+	height: 25px; /*--Height of image--*/
+}
+ul.onlineTeams li {
+	float: left;
+	margin: 0px; padding: 0px 2px;
+	text-align: center;
+	border: 0px
+	display: inline; /*--Gimp Fix aka IE6 Fix - Fixes double margin bug--*/
+}
+ul.onlineTeams li a.thumb {
+	width: 25px; /*--Width of image--*/
+	height: 25px; /*--Height of image--*/
+	padding: 0px;
+	border-top: 0px solid #ccc;
+	cursor: pointer;
+}
+ul.onlineTeams li span { /*--Used to crop image--*/
+	width: 25px;
+	height: 25px;
+	overflow: hidden;
+	display: block;
+}
+ul.onlineTeams li a.thumb:hover {
+	background: #CCC; /*--Hover effect for browser with js turned off--*/
+}
+ul.onlineTeams li a {text-decoration: none; color: #777; display: block;}
+
+ul.onlineTeams img
+{
+	/*
+    opacity:0.4;
+    filter:alpha(opacity=40);
+	*/
+}
+
+
+#container {position:relative; width:998px; height:85px; background-repeat:no-repeat; background-position:left; padding-top:15px; }
+
+#menu_block{
+	display:block;
+	float:left;
+	position:relative;
+}
+#topnav td { 
+	margin:0px; 
+	padding:0px; 
+	vertical-align:middle;
+	font-size:12px;
+}
+#topnav {
+	clear:both;
+	padding:0px;
+	text-align:right;
+	float:right;
+	text-align:right;
+	display:block;
+	color:#FFFFFF;
+}
+#topnav a.signin {
+	background:#dedede;
+	padding:4px ;
+	text-decoration:none;
+	font-weight:bold;
+	color:#333333;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.topnavblock{
+	display:block;
+	padding:4px;
+	height:100%;
+	background-color:transparent;
+	margin-right:4px;
+	margin-left:4px;
+}
+
+#topnav a.signin:hover {
+	background:#cccccc;
+}
+a.signin span {
+	background-image:url("../image/common/toggle_down_light.png");
+	background-repeat:no-repeat;
+	background-position:100% 50%;
+	padding:0px 16px 0px 0;
+}
+#topnav a.menu-open {
+	background:#e4e4e4!important;
+	color:#666!important;
+	outline:none;
+}
+.inbox {
+	display:block;
+	background-color:#666666;
+	color:#FFF;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:5px;
+}
+.inbox a {
+	padding:4px ;
+	text-decoration:none;
+	font-weight:bold;
+	color:#CCCCCC;
+}
+.inbox a:hover {
+	color:#FFFFFF;
+}
+
+#small_signup {
+	display:inline;
+	float:none;
+	line-height:23px;
+	margin:25px 0 0;
+	width:170px;
+}
+a.signin.menu-open span {
+	background-image:url("../image/common/toggle_up_dark.png");
+	color:#789;
+}
+
+#topnav a.leaguefile {
+	background:#dedede;
+	padding:3px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#333333;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	font-size:12px;
+}
+#topnav a.leaguefile:hover {
+	background:#cccccc;
+}
+
+
+#signin_gm {
+	display:block;
+	background-color:#dedede;
+	position:absolute;
+	width:620px;
+	height:22px;
+	z-index:100;
+	border:1px transparent;
+	text-align:left;
+	padding:2px;
+	top: 65px; 
+	right: 180px; 
+	margin-top:5px;
+	margin-right: 0px;
+	color:#333333;
+	font-size:11px;
+}
+#signin_gm td{
+	font-size:11px;
+	text-transform:uppercase;
+	vertical-align:top;
+} 
+
+#signin_menu {
+	display:none;
+	background-color:#dedede;
+	position:absolute;
+	width: 200px;
+    min-width: 200px;
+    margin: auto;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.40);
+    -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.40);
+    -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.40);
+	z-index:1000;
+	text-align:left;
+	padding:5px;
+	margin-top:5px;
+	margin-right: 0px;
+	color:#333333;
+	font-size:11px;
+	border-top-width:0px;
+	border-left-color:#000000;
+	border-left-width:1px;
+	border-left-style:outset;
+	border-right-color:#000000;
+	border-right-width:1px;
+	border-right-style:outset;
+	border-bottom-color:#000000;
+	border-bottom-width:1px;
+	border-bottom-style:outset;
+	float:right;
+	top:145px;
+	left:50%;
+	margin-left:263px;
+}
+
+#profile_menu {
+	display:none;
+	background-color:#dedede;
+	position:absolute;
+	width: 280px;
+    min-width: 200px;
+    margin: auto;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.40);
+    -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.40);
+    -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.40);
+	z-index:1000;
+	text-align:left;
+	padding:5px;
+	margin-top:5px;
+	margin-right: 0px;
+	color:#333333;
+	font-size:11px;
+	border-top-width:0px;
+	border-left-color:#000000;
+	border-left-width:1px;
+	border-left-style:outset;
+	border-right-color:#000000;
+	border-right-width:1px;
+	border-right-style:outset;
+	border-bottom-color:#000000;
+	border-bottom-width:1px;
+	border-bottom-style:outset;
+	float:right;
+	top:150px;
+	left:50%;
+	margin-left:180px;
+}
+
+#signin_menu label {
+	margin-bottom:5px;
+	padding-bottom:5px;
+	clear:both;
+	text-transform:uppercase;
+}
+#profile_menu label {
+	margin-bottom:5px;
+	padding-bottom:5px;
+	clear:both;
+	text-transform:uppercase;
+}
+.tipsy a{
+	text-decoration:none;
+}
+.tipsy a:hover{
+	text-decoration:underline;
+}
+
+.tipsy-inner {
+	padding:10px 15px;
+	line-height:1.5em;
+	font-weight:bold;
+}
+.tipsy {
+	opacity:.8;
+	filter:alpha(opacity=80);
+	background-repeat:no-repeat;
+	padding:5px;
+}
+.tipsy-inner {
+	padding:8px 8px;
+	max-width:200px;
+	font:11px 'Lucida Grande', sans-serif;
+	font-weight:bold;
+	-moz-border-radius:4px;
+	-khtml-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	background-color:#000;
+	color:white;
+	text-align:left;
+}
+.tipsy-north {
+	background-image:url("../image/common/tipsy-north.gif");
+	background-position:top center;
+}
+.tipsy-south {
+	background-image:url("../image/common/tipsy-south.gif");
+	background-position:bottom center;
+}
+.tipsy-east {
+	background-image:url("../image/common/tipsy-east.gif");
+	background-position:right center;
+}
+.tipsy-west {
+	background-image:url("../image/common/tipsy-west.gif");
+	background-position:left center;
+}
+
+
+	

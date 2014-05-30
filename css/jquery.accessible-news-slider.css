@@ -1,0 +1,119 @@
+/*
+	Accessible News Slider : Plugin Specific
+-----------------------------------------------------------------------------------------*/
+.accessible_news_slider {
+	width:833px;
+	display:block;
+	overflow:hidden;
+	height:85px;
+	margin:-5px 0px 0px 180px;
+}
+.accessible_news_slider li,
+.accessible_news_slider p {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 8px;
+}
+.accessible_news_slider li p {
+	font-size: 1em;
+}
+.accessible_news_slider {
+	position: relative;
+	overflow: hidden;
+}
+.accessible_news_slider .skip_to_news {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}
+.accessible_news_slider .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+.accessible_news_slider .back a,
+.accessible_news_slider .next a {
+	display: none;
+	outline: none; /* This is optional, and is arguably less accessible. */
+}
+.accessible_news_slider .next {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+.accessible_news_slider ul {
+	position: relative;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	overflow: hidden;
+	z-index: 1;
+	border-bottom: 0px;
+}
+.accessible_news_slider li {
+	float: left;
+	display: inline;
+	padding:5px 0px 0px 0px;
+	margin:0px 1px 0px 1px;
+	overflow: hidden;
+	width: 127px;
+	height:75px;
+	display:block;
+	font-size: 10px;
+	font-family: arial;
+	font-weight: bolder;
+	color: #B6B6B6;
+	font-size:0.85em;
+	border: 1px solid #3b3b3b;
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#454545), to(#191919));
+	background-image: -webkit-linear-gradient(top, #454545, #191919);
+	background-image: -moz-linear-gradient(top, #454545, #191919);
+	background-image: -o-linear-gradient(top, #454545, #191919);
+	background-image: -ms-linear-gradient(top, #454545, #191919);
+	background-image: linear-gradient(to bottom, #454545, #191919);
+}
+
+.accessible_news_slider td {
+	font-size:8.5px;
+	padding:3px;
+}
+.accessible_news_slider a:link {color: #B6B6B6;
+}
+.accessible_news_slider a:visited {color: #B6B6B6;
+}
+.accessible_news_slider a:hover {color: #12aad3;
+}
+.accessible_news_slider a:active {color: #B6B6B6;
+}
+
+/*
+	Accessible News Slider : Plugin Specific : Theme [ NHL ]
+-----------------------------------------------------------------------------------------*/
+
+
+.back {
+	width: 20px;
+	height: 60px;
+	background: url(../image/common/scoreboard-left.png) no-repeat;
+	cursor:pointer;
+	position:absolute;
+	top:20px;
+	left:50%;
+	margin-left:-342px;
+}
+.next {
+	width: 20px;
+	height: 60px;
+	left: 813px;
+	background: url(../image/common/scoreboard-right.png) no-repeat;
+	cursor:pointer;
+	position:absolute;
+	top:20px;
+	left:50%;
+	margin-left:471px;
+}
