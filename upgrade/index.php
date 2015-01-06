@@ -18,26 +18,33 @@ foreach ($lines as $line_num => $line)
 
 if ((isset($_POST["MM_Upgrade"])) && ($_POST["MM_Upgrade"] == "form1")) {
 	//RUN THE UPGRADE SCRIPT
-	if($_POST["version"] == "3.1"){
+	if($_POST["version"] == "3.2"){
+		include("STHS_UPGRADE_3.3.php");
+	} else if($_POST["version"] == "3.1"){
 		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	} else if($_POST["version"] == "3.0"){		
 		include("STHS_UPGRADE_3.1.php");
 		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	} else if($_POST["version"] == "2.2"){		
 		include("STHS_UPGRADE_3.0.php");
 		include("STHS_UPGRADE_3.1.php");
 		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	} else if($_POST["version"] == "2.1"){		
 		include("STHS_UPGRADE_2.2.php");		
 		include("STHS_UPGRADE_3.0.php");
 		include("STHS_UPGRADE_3.1.php");
 		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	} else if($_POST["version"] == "2.0"){		
 		include("STHS_UPGRADE_2.1.php");	
 		include("STHS_UPGRADE_2.2.php");		
 		include("STHS_UPGRADE_3.0.php");
 		include("STHS_UPGRADE_3.1.php");
 		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	} else {
 		include("STHS_UPGRADE_2.0.php");		
 		include("STHS_UPGRADE_2.1.php");	
@@ -45,7 +52,7 @@ if ((isset($_POST["MM_Upgrade"])) && ($_POST["MM_Upgrade"] == "form1")) {
 		include("STHS_UPGRADE_3.0.php");	
 		include("STHS_UPGRADE_3.1.php");	
 		include("STHS_UPGRADE_3.2.php");
-		include("STHS_UPGRADE_3.2.php");
+		include("STHS_UPGRADE_3.3.php");
 	}
 		
 	//UPDATE THE VERSION NUMBER IN DATABASE

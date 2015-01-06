@@ -14,9 +14,13 @@ $upgradeSQL =  sprintf("ALTER TABLE  `comments` ADD  `A_Type` INT( 11 ) NOT NULL
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 //UPGRADE config
 $upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` ADD  `Viewed` VARCHAR( 5 ) NOT NULL DEFAULT  'False' AFTER  `DateCreated`");
+$Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 $upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` CHANGE  `DateCreated`  `DateCreated` DATETIME NOT NULL`");
+$Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 $upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` CHANGE  `Value`  `Value` TEXT  DEFAULT NULL");
+$Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 $upgradeSQL =  sprintf("ALTER TABLE  `playerscontractoffers` ADD  `PlayerType` VARCHAR( 10 ) NOT NULL DEFAULT  'player' AFTER  `ContractType`");
+$Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 $upgradeSQL =  sprintf("ALTER TABLE  `mail` ADD  `recd` INT( 10 ) UNSIGNED NOT NULL DEFAULT  '0' AFTER  `Viewed`");
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 
