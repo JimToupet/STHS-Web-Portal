@@ -9,7 +9,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_Install"])) && ($_POST["MM_Install"] == "form1")) {
 
 // Name of the file
-$filename = 'STHS_INSTALL.sql';
+$filename = 'STHS_INSTALL_3.3_VERSION.sql';
 
 
 
