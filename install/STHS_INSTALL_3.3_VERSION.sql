@@ -193,7 +193,8 @@ CREATE TABLE `config` (
   `AI_FA_3RD_ODDS` int(2) NOT NULL DEFAULT '10',
   `AI_NOTRADE_TEAM_LIST` int(2) NOT NULL DEFAULT '8',
   `AI_NOTRADE_AVAILABLE` varchar(36) DEFAULT '3',
-  `RosterLimit` int(2) NOT NULL DEFAULT '50'
+  `RosterLimit` int(2) NOT NULL DEFAULT '50',
+  `CommishIcon` varchar(35) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `draft` (
@@ -1275,7 +1276,8 @@ CREATE TABLE `waiver_draftpicks` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 insert  into `config`
-(`TinyLeagueImage`,
+(`CommishIcon`,
+`TinyLeagueImage`,
 `SmallFarmLeagueLogo`,
 `SmallLeagueLogo`,
 `DisplayOffers`,
@@ -1314,6 +1316,7 @@ insert  into `config`
 `DraftYear`) 
 values 
 ('DefaultLogoTiny.jpg',
+'DefaultLogoTiny.jpg',
 'DefaultLogoTiny.jpg',
 'DefaultLogoTiny.jpg',
 1,

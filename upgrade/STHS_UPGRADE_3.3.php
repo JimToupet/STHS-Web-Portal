@@ -5,8 +5,9 @@ mysql_query($querysetBIG);
 set_time_limit(1200);
 
 //UPGRADE config
-$upgradeSQL =  sprintf("ALTER TABLE `config`
-						ADD `RosterLimit` int(2) NOT NULL DEFAULT '50';");
+$upgradeSQL =  sprintf("ALTER TABLE `config` ADD `RosterLimit` int(2) NOT NULL DEFAULT '50';"); 
+$Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
+$upgradeSQL =  sprintf("ALTER TABLE `config` ADD `CommishIcon` varchar(35) DEFAULT NULL;"); 
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 
 //UPGRADE config
@@ -15,7 +16,7 @@ $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 //UPGRADE config
 $upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` ADD  `Viewed` VARCHAR( 5 ) NOT NULL DEFAULT  'False' AFTER  `DateCreated`");
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
-$upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` CHANGE  `DateCreated`  `DateCreated` DATETIME NOT NULL`");
+$upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` CHANGE  `DateCreated`  `DateCreated` DATETIME NOT NULL");
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
 $upgradeSQL =  sprintf("ALTER TABLE  `teamhistory` CHANGE  `Value`  `Value` TEXT  DEFAULT NULL");
 $Result1 = mysql_query($upgradeSQL, $connection) or die(mysql_error());
