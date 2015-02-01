@@ -154,7 +154,7 @@ CREATE TABLE `config` (
   `MaxContract` int(11) NOT NULL DEFAULT '4',
   `ContractVary` int(11) NOT NULL DEFAULT '1',
   `GameResultForward` int(11) NOT NULL DEFAULT '1',
-  `Version` varchar(5) DEFAULT '3.0',
+  `Version` varchar(5) DEFAULT '3.3',
   `WaiverAgeExemption` int(11) NOT NULL DEFAULT '27',
   `WaiverSalaryExemption` int(11) NOT NULL DEFAULT '1500000',
   `WaiverMinimumGames` int(11) NOT NULL DEFAULT '10',
