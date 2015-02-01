@@ -1,3 +1,5 @@
+use sths;
+
 CREATE TABLE `articlegenerator` (
   `A_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Headline` varchar(50) DEFAULT NULL,
@@ -136,7 +138,7 @@ CREATE TABLE `config` (
   `RichTextEditor` int(11) DEFAULT '1',
   `FarmLeague` varchar(5) DEFAULT 'True',
   `JuniorLeague` varchar(5) DEFAULT 'False',
-  `LastModifiedFarmTeams` date NOT NULL,
+  `LastModifiedFarmTeams` date DEFAULT NULL,
   `LastModifiedTransactionHistory` date DEFAULT NULL,
   `LastModifiedTeamHistory` date DEFAULT NULL,
   `DivisionLeader` varchar(5) DEFAULT 'True',
@@ -148,6 +150,7 @@ CREATE TABLE `config` (
   `FarmLeagueColor` varchar(6) DEFAULT '000000',
   `PlayerAI` varchar(5) DEFAULT 'True',
   `TradeDeadlineDay` int(11) DEFAULT '0',
+  `TimeZone`varchar(25) DEFAULT 'TZ=',
   `MaxContract` int(11) NOT NULL DEFAULT '4',
   `ContractVary` int(11) NOT NULL DEFAULT '1',
   `GameResultForward` int(11) NOT NULL DEFAULT '1',
