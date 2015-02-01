@@ -101,7 +101,7 @@ if ($db_error != false) {
 	$tmpTitle = $db_error;
 	$tmpVersion = "-1";
 } else {
-	$tmpTitle = "STHS V2 : Web Portal Installation";
+	$tmpTitle = "STHS V3 : Web Portal Installation";
 	if (table_exists('config', DB_DATABASE)) {
 		$query_Version = sprintf("SELECT * FROM config");
 		$Version = mysql_query($query_Version, $connection) or die(mysql_error());
@@ -111,7 +111,7 @@ if ($db_error != false) {
 		if($totalRows_Version > 0){
 			if($row_Version['Version'] != ""){
 				$tmpVersion = $row_Version['Version'];
-				$tmpTitle = "You have already installed the STHS V2 Web Portal to your database";
+				$tmpTitle = "You have already installed the STHS V3 Web Portal to your database";
 			}
 		}
 	} else {
@@ -172,8 +172,8 @@ document.all.hideShow.style.visibility = 'visible';
     <p>Installation Steps:</p>
     <ol>
 	<li><strong>Create the MySQL database</strong>.  Keep a copy of the Hostname, Database name, username and password.</li>
-    <li><strong>Open the <strong><span class="style1">"simhl-setup.php"</span></strong> in the "Connections" folder. Enter the database credentials and save the file.</li>
-    <li><strong>Move</strong> the <span class="style1"><strong>"simhl-setup.php"</strong></span> to the live server.</li>
+    <li><strong>Open the <strong><span class="style1">"settings.php"</span></strong> in the "Connections" folder. Enter the database credentials and save the file.</li>
+    <li><strong>Move</strong> the <span class="style1"><strong>"settings.php"</strong></span> to the server.</li>
      <?php if ($tmpVersion == 0){ ?>
    	<li>When you have completed the above, <strong>click Install</strong> below to setup your Database for STHS Web Portal. </li>
     </ol>
