@@ -130,7 +130,7 @@ if ($db_error != false) {
 	$tmpCurrentVersion = 0;
 	$tmpVersion = "-1";
 } else {
-	$tmpTitle = "STHS V2 : Web Portal ".$tmpFileVersion." Upgrade";
+	$tmpTitle = "STHS V3 : Web Portal ".$tmpFileVersion." Upgrade";
 	if (table_exists('config', DB_DATABASE)) {
 		$query_Version = sprintf("SELECT * FROM config");
 		$Version = mysql_query($query_Version, $connection) or die(mysql_error());
@@ -143,9 +143,9 @@ if ($db_error != false) {
 				$tmpVersion = $row_Version['Version'];
 				$tmpCurrentVersion = $row_Version['Version'];
 				if($tmpVersion == $tmpFileVersion){
-					$tmpTitle = "You have already upgraded STHS v2 Web Portal ".$tmpFileVersion." database.";
+					$tmpTitle = "You have already upgraded STHS v3 Web Portal ".$tmpFileVersion." database.";
 				} else {
-					$tmpTitle = "STHS v2 Web Portal ".$tmpFileVersion." Upgrade";
+					$tmpTitle = "STHS v3 Web Portal ".$tmpFileVersion." Upgrade";
 					$tmpInstructions = "<p>Your database is currently version $tmpVersion.   If you click <strong>Upgrade</strong>, you will upgrade the database to version $tmpFileVersion.</p>";
 					$tmpVersion = 0;
 				}
@@ -209,9 +209,9 @@ document.all.hideShow.style.visibility = 'visible';
     <?php echo $tmpInstructions;?>
     <p>Upgrading Steps:</p>
     <ol>
-	<li>Find your MySQL <strong>hostname</strong>, <strong>database name</strong>, <strong>username</strong>, and <strong>pasword</strong>.</li>
-    <li>Open the <strong><span class="style1">"simhl-setup.php"</span></strong> in the "Connections" folder and confirm you have the correct database credentials <Br />and save the file.</li>
-    <li><strong>Move</strong> the <span class="style1"><strong>"simhl-setup.php"</strong></span> to the live server.</li>
+	<li>Find your MySQL <strong>hostname</strong>, <strong>database name</strong>, <strong>username</strong>, and <strong>password</strong>.</li>
+    <li>Open the <strong><span class="style1">"settings.php"</span></strong> in the "Connections" folder and confirm you have the correct database credentials <Br />and save the file.</li>
+    <li><strong>Move</strong> the <span class="style1"><strong>"settings.php"</strong></span> to the server.</li>
     <?php if ($tmpVersion == 0){ ?>
     <li>When you have completed the above, <strong>click Upgrade</strong> below to setup your Database for STHS Web Portal. </li>
     </ol>
