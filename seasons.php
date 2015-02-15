@@ -130,7 +130,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && $_POST['
 		}
   
 	} else if ($_POST['CreateNextSeason'] == 2){
-		$NewSeason = $tmpYear."-PreSeason - here";	
+		$NewSeason = $tmpYear."-PreSeason";	
 		
 		if (!mkdir("File/".$NewSeason, 0777, true)) {
 			die("Failed to create folders..../File/".$NewSeason);
