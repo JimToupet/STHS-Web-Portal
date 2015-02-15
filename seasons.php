@@ -65,36 +65,52 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && $_POST['
   if(isset($_POST['CreateNextSeason'])){
   	if ($_POST['CreateNextSeason'] == 2 && $_POST['AdjustYear'] == 1){
 		$NewSeason = $tmpYear."-PreSeason";
-		$NewSeason = $tmpYear."-PreSeason";
 		$NewSeasonName = $tmpYear;
-		mkdir("File/".$NewSeason, 0777);
-		$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
+		
+		if (!mkdir("File/".$NewSeason, 0777, true)) {
+			die("Failed to create folders..../File/".$NewSeason);
+		}
+		else {		
+			$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
 						GetSQLValueString($tmpYear, "text"),
 						GetSQLValueString($_POST['CreateNextSeason'], "int"),
 						GetSQLValueString($NewSeason, "text"));
 						$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		}
+		
 	} else if ($_POST['CreateNextSeason'] == 1){
 		$NewSeason = $tmpYear."-RegularSeason";
-		mkdir("File/".$NewSeason, 0777);
-		$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
+		
+		if (!mkdir("File/".$NewSeason, 0777, true)) {
+			die("Failed to create folders..../File/".$NewSeason);
+		}
+		else {		
+			$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
 						GetSQLValueString($tmpYear, "text"),
 						GetSQLValueString($_POST['CreateNextSeason'], "int"),
 						GetSQLValueString($NewSeason, "text"));
 						$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		}
+		
 	} else if ($_POST['CreateNextSeason'] == 0){
 		$NewSeason = $tmpYear."-Playoffs";
-		mkdir("File/".$NewSeason, 0777);
-		$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
+		
+		if (!mkdir("File/".$NewSeason, 0777, true)) {
+			die("Failed to create folders..../File/".$NewSeason);
+		}
+		else {		
+			$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, %s, 0, %s)",
 						GetSQLValueString($tmpYear, "text"),
-						GetSQLValueString($_POST['CreateNextSeason'], "text"),
+						GetSQLValueString($_POST['CreateNextSeason'], "int"),
 						GetSQLValueString($NewSeason, "text"));
 						$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		
 						
-		 $insertSQL = sprintf("INSERT INTO trophywinners (Season_ID,Team) values (%s,0)",
+			$insertSQL = sprintf("INSERT INTO trophywinners (Season_ID,Team) values (%s,0)",
 					   	GetSQLValueString($tmpYear, "int"));
 						$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
 		
-		foreach( $_SESSION['MenuTeams'] as $TeamPage => $value){
+			foreach( $_SESSION['MenuTeams'] as $TeamPage => $value){
 				$insertSQL = sprintf("INSERT INTO trophywinners (Season_ID,Team) values (%s,%s)",
 					   	GetSQLValueString($tmpYear, "int"),
 						GetSQLValueString($_SESSION['MenuTeamsID'][$TeamPage], "int"));
@@ -110,15 +126,22 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && $_POST['
 							GetSQLValueString(strftime('%Y-%m-%d %H:%M:%S', strtotime('now')), "date"));
 							
   						$Result2 = mysql_query($insertSQL, $connection) or die(mysql_error());
+			}
 		}
   
 	} else if ($_POST['CreateNextSeason'] == 2){
-		$NewSeason = $tmpYear."-PreSeason";	
-		mkdir("File/".$NewSeason, 0777);
-		$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, 2, 0, %s)",
+		$NewSeason = $tmpYear."-PreSeason - here";	
+		
+		if (!mkdir("File/".$NewSeason, 0777, true)) {
+			die("Failed to create folders..../File/".$NewSeason);
+		}
+		else {		
+		
+			$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active, Folder) values (%s, 2, 0, %s)",
 						GetSQLValueString($tmpYear, "text"),
 						GetSQLValueString($NewSeason, "text"));
 						$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		}
 	}
   
   }
@@ -129,16 +152,23 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && $_POST['
   }
   header(sprintf("Location: %s", $updateGoTo));
 } else if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && $_POST['action'] == "create") {
-	mkdir("File/".$tmpYear."-PreSeason", 0700);
-	$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active) values (%s, 0, 1)",
+	
+	if (!mkdir("File/".$tmpYear."-PreSeason", 0700, true)) {
+			die("Failed to create folders..../File/".$NewSeason);
+		}
+	else {		
+	
+		$insertSQL = sprintf("insert into seasons (Season, SeasonType, Active) values (%s, 0, 1)",
                         GetSQLValueString($tmpYear, "text"));
-	$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
-  $updateGoTo = "seasons.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $updateGoTo));
+		$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		$updateGoTo = "seasons.php";
+	
+		if (isset($_SERVER['QUERY_STRING'])) {
+			$updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+			$updateGoTo .= $_SERVER['QUERY_STRING'];
+		}
+		header(sprintf("Location: %s", $updateGoTo));
+	}
 }
 
 
