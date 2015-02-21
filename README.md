@@ -1,3 +1,9 @@
+This repo come from the original repo : https://github.com/mikebastarache/sths-v2-web-portal
+
+This repo is a maintained version of the web portal to assist in the STHS community.
+
+No new features will be added. This version is maintained to address various bugs.
+
 sths-v2-web-portal
 ==================
 
@@ -15,7 +21,7 @@ https://github.com/ckeditor
 Installation steps
 ==================
 
-Download the Web Portal Package .zip file
+Download the latest [release] (https://github.com/JimToupet/STHS-Web-Portal/releases) of web portal.
 
 Unzip files locally on your computer
 
