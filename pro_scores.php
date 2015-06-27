@@ -64,14 +64,15 @@ $query_GetScheduleDay = sprintf("SELECT schedule.* FROM schedule  WHERE schedule
 $query_limit_GetScheduleDay = sprintf("%s LIMIT %d, %d", $query_GetScheduleDay, $startRow_GetScheduleDay, $maxRows_GetScheduleDay);
 $GetScheduleDay = mysql_query($query_limit_GetScheduleDay, $connection) or die(mysql_error());
 $row_GetScheduleDay = mysql_fetch_assoc($GetScheduleDay);
-$totalRows_GetScheduleDay = mysql_num_rows($GetScheduleDay);
 
+// Bug fix : max day in calendar
 if (isset($_GET['totalRows_GetScheduleDay'])) {
-  $totalRows_GetScheduleDay = $_GET['totalRows_GetScheduleDay'];
+	$totalRows_GetScheduleDay = $_GET['totalRows_GetScheduleDay'];
 } else {
-  $all_GetScheduleDay = mysql_query($query_GetScheduleDay);
-  $totalRows_GetScheduleDay = mysql_num_rows($all_GetScheduleDay);
+	$resQuery = mysql_query("SELECT MAX(day) days FROM schedule WHERE Season_ID =".$SID_GetSchedule, $connection) or die(mysql_error());
+	$totalRows_GetScheduleDay = mysql_result($resQuery, 0, 0);
 }
+
 $totalPages_GetScheduleDay = ceil($totalRows_GetScheduleDay/$maxRows_GetScheduleDay);
 $queryString_GetScheduleDay = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
@@ -95,7 +96,7 @@ $query_GetSchedule = sprintf("SELECT schedule.* FROM schedule  WHERE schedule.Se
 }
 $GetSchedule = mysql_query($query_GetSchedule, $connection) or die(mysql_error());
 $row_GetSchedule= mysql_fetch_assoc($GetSchedule);
-$totalRows_GetSchedule = mysql_num_rows($GetSchedule);
+$totalRows_GetSchedule = mysql_num_rows($GetSchedule); 
 
 $query_GetSeasons = sprintf("SELECT Folder FROM seasons WHERE Active=1");
 $GetSeasons = mysql_query($query_GetSeasons, $connection) or die(mysql_error());

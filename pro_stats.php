@@ -133,23 +133,23 @@ case 'fr':
 
 $SID_GetSkaters = "1";
 if (isset($_SESSION['current_SeasonID'])) {
-  $SID_GetSkaters = (get_magic_quotes_gpc()) ? $_SESSION['current_SeasonID'] : addslashes($_SESSION['current_SeasonID']);
+  $SID_GetSkaters = $_SESSION['current_SeasonID'];
 }
 if (isset($_POST['season_id'])) {
-  $SID_GetSkaters = (get_magic_quotes_gpc()) ? $_POST['season_id'] : addslashes($_POST['season_id']);
+  $SID_GetSkaters = $_POST['season_id'];
 }
 if (isset($_GET['season_id'])) {
-  $SID_GetSkaters = (get_magic_quotes_gpc()) ? $_GET['season_id'] : addslashes($_GET['season_id']);
+  $SID_GetSkaters = $_GET['season_id'];
 }
 
 $SORT_GOALIE = "ProW";
 if (isset($_GET['sort_goalie'])) {
-  $SORT_GOALIE = (get_magic_quotes_gpc()) ? $_GET['sort_goalie'] : addslashes($_GET['sort_goalie']);
+  $SORT_GOALIE = $_GET['sort_goalie'];
 }
 
 $TID_GetSkaters = "1";
 if (isset($_SESSION['current_Team_ID'])) {
-  $TID_GetSkaters = (get_magic_quotes_gpc()) ? $_SESSION['current_Team_ID'] : addslashes($_SESSION['current_Team_ID']);
+  $TID_GetSkaters = $_SESSION['current_Team_ID'];
 }
 
 mysql_query("set sql_big_selects=1");
