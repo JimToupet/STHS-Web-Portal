@@ -329,5 +329,5 @@ if(!isset($_SESSION['current_SeasonID']))
 	mysql_free_result($GetTotalDays);
 	mysql_free_result($GetLastDay);
 }
-putenv($_SESSION['current_TimeZone']);
+date_default_timezone_set(substr($_SESSION['current_TimeZone'],3));
 ?>
