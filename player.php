@@ -679,7 +679,7 @@ nav {background-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>;}
 								echo "<strong>$".number_format($tmpCapHit/$row_GetPlayer['Contract'],0)." ".$l_Over." ".$row_GetPlayer['Contract']." ".$l_t_years."</strong>&nbsp;";
 								if ($row_GetPlayer['NoTrade'] == "True"){ echo $tmpNTC; }
 							} else {
-								$query_RFA = sprintf("SELECT P.Name FROM players as P WHERE Exists (SELECT 1 FROM playersextensionoffers AS E WHERE E.Player=P.Number AND E.Type='Extension' AND E.PlayerType <> 'goalie') AND P.Age < %s AND P.Number=%s",$UFA, $row_GetPlayer['Number']);
+								$query_RFA = sprintf("SELECT P.Name FROM players as P WHERE Exists (SELECT 1 FROM playersextensionoffers AS E WHERE E.Player=P.Number AND E.Type='Extension') AND P.Age < %s AND P.Number=%s",$UFA, $row_GetPlayer['Number']);
 								$GetRFA = mysql_query($query_RFA, $connection) or die(mysql_error());
 								$row_GetRFA = mysql_fetch_assoc($GetRFA);
 								$totalRows_GetRFA = mysql_num_rows($GetRFA);
