@@ -82,7 +82,7 @@ case 'en':
 	break; 
 
 case 'fr': 
-	$l_AnyTeam = "N’importe quelle formations dans la ligue.";
+	$l_AnyTeam = "Nâ€™importe quelle formations dans la ligue.";
 	$l_AssistantCaptain = "Assistant Capitaine";
 	$l_AvailableTrade = "Disponible pour &eacute;change";
 	$l_AvgCap = "Moyenne Masse Salariale";
@@ -183,7 +183,7 @@ $GetPlayoffStats = mysql_query($query_GetPlayoffStats, $connection) or die(mysql
 $row_GetPlayoffStats = mysql_fetch_assoc($GetPlayoffStats);
 $totalRows_GetPlayoffStats = mysql_num_rows($GetPlayoffStats);
 
-$query_GetPlayerExtensionOffersCT = sprintf("SELECT Attempt,DateCreated FROM playersextensionoffers WHERE Player=%s AND Team=%s AND PlayerType='player' AND Type='Extension' ORDER BY DateCreated DESC ", $PID_GetPlayer, $row_GetPlayer['Team']);
+$query_GetPlayerExtensionOffersCT = sprintf("SELECT Attempt,DateCreated FROM playersextensionoffers WHERE Player=%s AND Team=%s AND Type='Extension' ORDER BY DateCreated DESC ", $PID_GetPlayer, $row_GetPlayer['Team']);
 $GetPlayerExtensionOffersCT = mysql_query($query_GetPlayerExtensionOffersCT, $connection) or die(mysql_error());
 $row_GetPlayerExtensionOffersCT = mysql_fetch_assoc($GetPlayerExtensionOffersCT);
 $totalRows_GetPlayerExtensionOffersCT = mysql_num_rows($GetPlayerExtensionOffersCT);
