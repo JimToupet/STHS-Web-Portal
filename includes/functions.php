@@ -114,73 +114,26 @@ function getAvatar($service_id, $service_type, $team, $connection){
 }
 
 
-/* 
-## converts a given date format to another date format returns date if the checked date given is valid; otherwise returns NULL
-## $s_date the date in e.g. dd/mm/yyyy
-## $s_from, $s_to date formats from to i.e. convertdate('13/04/2009','eng','iso','-'); output: 2009-04-13
-## date formats available
-## 'eng' = dd/mm/yyyy
-## 'usa' = mm/dd/yyyy
-## 'iso' = yyyy/mm/dd
-## $s_return_delimiter returned delimiter e.g. '-' would return dd-mm-yyyy 
-*/
 function convertdate($s_date,$s_from,$s_to,$s_return_delimiter) {
 
     $s_return_date = '';
-    $s_from = strtolower($s_from);
     $s_to = strtolower($s_to);
-    $s_date = str_replace(array('\'', '-', '.', ',', ' '), '/', $s_date);
-    $a_date = explode('/', $s_date); 
-    
-    switch($s_from) {
-        case 'eng': # dd/mm/yyyy
-            $day = $a_date[0];
-            $month = $a_date[1];
-            $year = $a_date[2]; 
-        break;
-        case 'usa':  # mm/dd/yyyy
-            $month = $a_date[0];
-            $day = $a_date[1];
-            $year = $a_date[2]; 
-        break;
-        case 'iso': # yyyy/mm/dd
-            $year = $a_date[0]; 
-            $month = $a_date[1];
-            $day = $a_date[2];
-        break;
-        default: # error message
-            user_error('function convertdate(string $s_date, string $s_from, string $s_to, string $s_return_delimiter) $s_from not a valid type of \'eng\', \'usa\' or \'iso\'');
-            return NULL;
-    }
-
-    # substitution fixes of valid alternative human input e.g. 1/12/08
-    if (strlen($day)==1) { $day='0'.$day; } # day -trailing zero missing
-    if (strlen($month)==1) { $month='0'.$month; } # month -trailing zero missing
-    if (strlen($year)==3) { $year=substr(date('Y'),0,strlen(date('Y'))-3).$year; } # year -millennium missing
-    if (strlen($year)==2) { $year=substr(date('Y'),0,strlen(date('Y'))-2).$year; } # year -century missing
-    if (strlen($year)==1) { $year=substr(date('Y'),0,strlen(date('Y'))-1).$year; } # year -decade missing
-
+ 
     switch($s_to) {
         case 'eng': # dd/mm/yyyy
-            $s_return_date = $day.$s_return_delimiter.$month.$s_return_delimiter.$year;
+            $s_return_date = date("d/m/Y",strtotime($s_date));
         break;
         case 'usa':  # mm/dd/yyyy
-            $s_return_date = $month.$s_return_delimiter.$day.$s_return_delimiter.$year;
+            $s_return_date = date("m/d/Y",strtotime($s_date));
         break;
         case "iso": # yyyy/mm/dd
-            $s_return_date = $year.$s_return_delimiter.$month.$s_return_delimiter.$day;
+            $s_return_date = date("Y/m/d",strtotime($s_date));
         break;
         default: # error message
             user_error('function convertdate(string $s_date, string $s_from, string $s_to, string $s_return_delimiter) $s_to not a valid type of \'eng\', \'usa\' or \'iso\'');
             return NULL;
     }
 
-    # if it's an invalid calendar date e.g. 40/02/2009 or rt/we/garbage
-    if (!is_numeric($month) || !is_numeric($day) || !is_numeric($year)) { 
-        return NULL;
-    } elseif (!checkdate($month, $day, $year)) {
-        return NULL;
-    }
 
     return $s_return_date;
 }
