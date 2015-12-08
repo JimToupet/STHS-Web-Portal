@@ -147,19 +147,27 @@ if (isset($_GET['sort_goalie'])) {
   $SORT_GOALIE = $_GET['sort_goalie'];
 }
 
-$TID_GetSkaters = "1";
+$TID_GetSkaters = "";
 if (isset($_SESSION['current_Team_ID'])) {
   $TID_GetSkaters = $_SESSION['current_Team_ID'];
 }
 
 mysql_query("set sql_big_selects=1");
 
-$query_GetStats = sprintf("SELECT playerstats.*, players.Name, players.Number, players.Team, players.Team as ActiveTeam FROM playerstats, players WHERE playerstats.Team=%s AND playerstats.ProGP > 0 AND playerstats.Season_ID=%s AND players.Name=playerstats.Name GROUP BY playerstats.Name ORDER BY ProPoint desc", $TID_GetSkaters, $SID_GetSkaters);
+if ($TID_GetSkaters != "")
+	$query_GetStats = sprintf("SELECT playerstats.*, players.Name, players.Number, players.Team, players.Team as ActiveTeam FROM playerstats, players WHERE playerstats.Team=%s AND playerstats.ProGP > 0 AND playerstats.Season_ID=%s AND players.Name=playerstats.Name GROUP BY playerstats.Name ORDER BY ProPoint desc", $TID_GetSkaters, $SID_GetSkaters);
+else
+	$query_GetStats = sprintf("SELECT playerstats.*, players.Name, players.Number, players.Team, players.Team as ActiveTeam FROM playerstats, players WHERE playerstats.ProGP > 0 AND playerstats.Season_ID=%s AND players.Name=playerstats.Name GROUP BY playerstats.Name ORDER BY ProPoint desc", $SID_GetSkaters);
+
 $GetStats = mysql_query($query_GetStats, $connection) or die(mysql_error());
 $row_GetStats = mysql_fetch_assoc($GetStats);
 $totalRows_GetStats = mysql_num_rows($GetStats);
 
-$query_GetGoalieStats = sprintf("SELECT goaliestats.*, goalies.Name, goalies.Number, goalies.Team, goalies.Team as ActiveTeam  FROM goaliestats, goalies WHERE goaliestats.Team=%s AND goaliestats.ProGP > 0 AND goaliestats.Season_ID=%s AND goalies.Name=goaliestats.Name GROUP BY goaliestats.Name ORDER BY ProGP desc", $TID_GetSkaters,$SID_GetSkaters);
+if ($TID_GetSkaters != "")
+	$query_GetGoalieStats = sprintf("SELECT goaliestats.*, goalies.Name, goalies.Number, goalies.Team, goalies.Team as ActiveTeam  FROM goaliestats, goalies WHERE goaliestats.Team=%s AND goaliestats.ProGP > 0 AND goaliestats.Season_ID=%s AND goalies.Name=goaliestats.Name GROUP BY goaliestats.Name ORDER BY ProGP desc", $TID_GetSkaters,$SID_GetSkaters);
+else
+	$query_GetGoalieStats = sprintf("SELECT goaliestats.*, goalies.Name, goalies.Number, goalies.Team, goalies.Team as ActiveTeam  FROM goaliestats, goalies WHERE goaliestats.ProGP > 0 AND goaliestats.Season_ID=%s AND goalies.Name=goaliestats.Name GROUP BY goaliestats.Name ORDER BY ProGP desc", $SID_GetSkaters);
+
 $GetGoalieStats = mysql_query($query_GetGoalieStats, $connection) or die(mysql_error());
 $row_GetGoalieStats = mysql_fetch_assoc($GetGoalieStats);
 $totalRows_GetGoalieStats = mysql_num_rows($GetGoalieStats);
