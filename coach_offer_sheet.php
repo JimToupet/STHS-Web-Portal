@@ -285,7 +285,7 @@ nav {background-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>;}
 <table cellpadding="0" cellspacing="0" border="0" width="100%" height="150">
 <tr>
 	<td width="110" valign="top" style="vertical-align:top">
-    	<img src="<?php echo $_SESSION['DomainName']; ?>/image/players/<?php echo $row_GetCoach['Photo']; ?>" style=" border-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>; width:100px; height:150px; border-width:1px; margin-top:10px; border-style:solid;" width="100" height="150"/>
+    	<img src="<?php echo $_SESSION['DomainName']; ?>/image/coaches/<?php echo $row_GetCoach['Photo']; ?>" style=" border-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>; width:100px; height:150px; border-width:1px; margin-top:10px; border-style:solid;" width="100" height="150"/>
     	<INPUT id="age" onfocus=select() type="hidden" value="<?php echo $row_GetCoach['Age']; ?>" name=age>
         <INPUT id="prevsal" type="hidden" onfocus=select() size=8 value="<?php echo $row_GetCoach['Salary']; ?>" name=prevsal>        
     </td>

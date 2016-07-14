@@ -82,7 +82,7 @@ case 'en':
 	break; 
 
 case 'fr': 
-	$l_AnyTeam = "N’importe quelle formations dans la ligue.";
+	$l_AnyTeam = "Nâ€™importe quelle formations dans la ligue.";
 	$l_AssistantCaptain = "Assistant Capitaine";
 	$l_AvailableTrade = "Disponible pour &eacute;change";
 	$l_AvgCap = "Moyenne Masse Salariale";
@@ -183,7 +183,7 @@ $GetPlayoffStats = mysql_query($query_GetPlayoffStats, $connection) or die(mysql
 $row_GetPlayoffStats = mysql_fetch_assoc($GetPlayoffStats);
 $totalRows_GetPlayoffStats = mysql_num_rows($GetPlayoffStats);
 
-$query_GetPlayerExtensionOffersCT = sprintf("SELECT Attempt,DateCreated FROM playersextensionoffers WHERE Player=%s AND Team=%s AND PlayerType='player' AND Type='Extension' ORDER BY DateCreated DESC ", $PID_GetPlayer, $row_GetPlayer['Team']);
+$query_GetPlayerExtensionOffersCT = sprintf("SELECT Attempt,DateCreated FROM playersextensionoffers WHERE Player=%s AND Team=%s AND Type='Extension' ORDER BY DateCreated DESC ", $PID_GetPlayer, $row_GetPlayer['Team']);
 $GetPlayerExtensionOffersCT = mysql_query($query_GetPlayerExtensionOffersCT, $connection) or die(mysql_error());
 $row_GetPlayerExtensionOffersCT = mysql_fetch_assoc($GetPlayerExtensionOffersCT);
 $totalRows_GetPlayerExtensionOffersCT = mysql_num_rows($GetPlayerExtensionOffersCT);
@@ -679,7 +679,7 @@ nav {background-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>;}
 								echo "<strong>$".number_format($tmpCapHit/$row_GetPlayer['Contract'],0)." ".$l_Over." ".$row_GetPlayer['Contract']." ".$l_t_years."</strong>&nbsp;";
 								if ($row_GetPlayer['NoTrade'] == "True"){ echo $tmpNTC; }
 							} else {
-								$query_RFA = sprintf("SELECT P.Name FROM players as P WHERE Exists (SELECT 1 FROM playersextensionoffers AS E WHERE E.Player=P.Number AND E.Type='Extension' AND E.PlayerType <> 'goalie') AND P.Age < %s AND P.Number=%s",$UFA, $row_GetPlayer['Number']);
+								$query_RFA = sprintf("SELECT P.Name FROM players as P WHERE Exists (SELECT 1 FROM playersextensionoffers AS E WHERE E.Player=P.Number AND E.Type='Extension') AND P.Age < %s AND P.Number=%s",$UFA, $row_GetPlayer['Number']);
 								$GetRFA = mysql_query($query_RFA, $connection) or die(mysql_error());
 								$row_GetRFA = mysql_fetch_assoc($GetRFA);
 								$totalRows_GetRFA = mysql_num_rows($GetRFA);
