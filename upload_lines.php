@@ -29,24 +29,31 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-	
-$uploaddir = 'File/GMLines/';
-$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-    $errortxt = "Congratulations, the file is valid, and was successfully uploaded.\n";
-		
-	
-	$updateSQL = "UPDATE proteam SET LastModifiedLines='".strftime('%Y-%m-%d %H:%M:%S', strtotime('now'))."' WHERE Name='".$_SESSION['current_Team']."'";
-	$Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
-	$insertSQL = sprintf("INSERT INTO participation (DateCreated,Team,Season_ID,Type) values (%s,%s,%s,%s)",
-                       	GetSQLValueString(strftime('%Y-%m-%d', strtotime('now')), "date"),
-                        GetSQLValueString($_SESSION['U_Team'], "text"),
-						GetSQLValueString($_SESSION['current_SeasonID'], "int"),
-						GetSQLValueString("Upload", "text"));
-  	$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
-} else {
-    $errortxt = "";
-}
+
+	if (allowedExtension($_FILES['userfile']['name'],"shl")) {
+
+		$uploaddir = 'File/GMLines/';
+		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+			$errortxt = "Congratulations, the file is valid, and was successfully uploaded.\n";
+
+
+			$updateSQL = "UPDATE proteam SET LastModifiedLines='".strftime('%Y-%m-%d %H:%M:%S', strtotime('now'))."' WHERE Name='".$_SESSION['current_Team']."'";
+			$Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
+			$insertSQL = sprintf("INSERT INTO participation (DateCreated,Team,Season_ID,Type) values (%s,%s,%s,%s)",
+				GetSQLValueString(strftime('%Y-%m-%d', strtotime('now')), "date"),
+				GetSQLValueString($_SESSION['U_Team'], "text"),
+				GetSQLValueString($_SESSION['current_SeasonID'], "int"),
+				GetSQLValueString("Upload", "text"));
+			$Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+		} else {
+			$errortxt = "";
+		}
+	}
+	else {
+		$errorxt = "Error uploading your file";
+	}
 }
 ?>
 <!DOCTYPE html>

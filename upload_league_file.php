@@ -22,18 +22,25 @@ if ($ID_GetAction == 1){
 	$updateGoTo = "import_csv_proteam.php?action=1";
 	
 } else {
-	$file = $uploaddir . basename($_FILES['leagueFile']['name']);
-	$filename = basename($_FILES['leagueFile']['name']);
-	//echo basename($_FILES['xmlFile']['name']);
-	if (move_uploaded_file($_FILES['leagueFile']['tmp_name'], $file)) {
-		//echo "<h4 align=center>Uploading League File</h4>";
-		$updateSQL = "UPDATE seasons SET LeagueFile='".$filename."' where S_ID=".$CurrentSeasonID;
-		$Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
-	} else {
+	if (allowedExtension($_FILES['leagueFile']['name'],"stc")) {
+
+		$file = $uploaddir . basename($_FILES['leagueFile']['name']);
+		$filename = basename($_FILES['leagueFile']['name']);
+		//echo basename($_FILES['xmlFile']['name']);
+		if (move_uploaded_file($_FILES['leagueFile']['tmp_name'], $file)) {
+			//echo "<h4 align=center>Uploading League File</h4>";
+			$updateSQL = "UPDATE seasons SET LeagueFile='".$filename."' where S_ID=".$CurrentSeasonID;
+			$Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
+		} else {
+			echo "<FORM><div align=center><h3>Unable to upload file.  Please try again.</h3><INPUT TYPE='button' VALUE='Go Back' onClick='history.back()'></FORM></div>";
+			exit();
+		}
+		$updateGoTo = "upload.php";
+	}
+	else {
 		echo "<FORM><div align=center><h3>Unable to upload file.  Please try again.</h3><INPUT TYPE='button' VALUE='Go Back' onClick='history.back()'></FORM></div>";
 		exit();
 	}
-	$updateGoTo = "upload.php";
 }
 
 $updateSQL = "UPDATE config SET LastModifiedLeagueFile='".strftime('%Y-%m-%d', strtotime('now'))."', LeagueFile='".$filename."'";

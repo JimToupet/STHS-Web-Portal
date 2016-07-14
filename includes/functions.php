@@ -1,5 +1,11 @@
 <?php
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function allowedExtension($file, $allowedExt){
+	$extension = pathinfo($file, PATHINFO_EXTENSION);
+
+	return $extension === $allowedExt;
+}
+
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
   switch ($theType) {

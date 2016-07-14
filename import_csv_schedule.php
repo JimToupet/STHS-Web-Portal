@@ -27,16 +27,22 @@ if ($ID_GetAction == 1){
 		$updateGoTo = "import_todaysgame.php?action=1";
 	}
 } else {
-	$file = $uploaddir . basename($_FILES['xmlFile']['name']);
-	$updateGoTo = "upload.php";
-	//$file = $uploaddir ."QMJHL0-ProTeam.xml";
-	//echo basename($_FILES['xmlFile']['name']);
-	if (move_uploaded_file($_FILES['xmlFile']['tmp_name'], $file)) {
-	  $updateSQL = "UPDATE seasons SET Schedule='".basename($_FILES['xmlFile']['name'])."' where S_ID=".$CurrentSeasonID;
-	  $Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
+	if (allowedExtension($_FILES['xmlFile']['name'],"csv")) {
+		$file = $uploaddir . basename($_FILES['xmlFile']['name']);
+		$updateGoTo = "upload.php";
+		//$file = $uploaddir ."QMJHL0-ProTeam.xml";
+		//echo basename($_FILES['xmlFile']['name']);
+		if (move_uploaded_file($_FILES['xmlFile']['tmp_name'], $file)) {
+			$updateSQL = "UPDATE seasons SET Schedule='".basename($_FILES['xmlFile']['name'])."' where S_ID=".$CurrentSeasonID;
+			$Result1 = mysql_query($updateSQL, $connection) or die(mysql_error());
 
-	} else {
-		echo "<h5 align=center>Unable to process Schedule file.  Please try uploading the file manually in previous page.</h5>";
+		} else {
+			echo "<h5 align=center>Unable to process Schedule file.  Please try uploading the file manually in previous page.</h5>";
+			exit();
+		}
+	}
+	else {
+		echo "<FORM><div align=center><h3>Unable to upload file.  Please try again.</h3><INPUT TYPE='button' VALUE='Go Back' onClick='history.back()'></FORM></div>";
 		exit();
 	}
 }
