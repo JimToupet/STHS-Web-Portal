@@ -1030,7 +1030,7 @@ CREATE TABLE `seasons` (
   `SeasonType` int(16) DEFAULT NULL,
   `Active` tinyint(1) DEFAULT NULL,
   `Folder` varchar(32) NOT NULL,
-  `DraftYear` int(11) NOT NULL,
+  `DraftYear` int(11) DEFAULT NULL,
   `LeagueFile` varchar(35) DEFAULT NULL,
   `ProTeams` varchar(35) DEFAULT NULL,
   `FarmTeams` varchar(35) DEFAULT NULL,
