@@ -839,7 +839,7 @@ CREATE TABLE `proteam` (
   `Administrator` varchar(6) DEFAULT '0',
   `Avatar` varchar(32) DEFAULT 'defaultgm.jpg',
   `EmailAlert` varchar(6) DEFAULT '0',
-  `Bio` text NOT NULL,
+  `Bio` text,
   `CommishNotes` text NOT NULL,
   `LastModifiedLines` date NOT NULL,
   `LastVisit` datetime DEFAULT NULL,
