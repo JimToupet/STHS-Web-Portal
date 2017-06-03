@@ -47,6 +47,7 @@ $row_EditGM = mysql_fetch_assoc($EditGM);
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/jquery.tipsy.js"></script> 
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/ui.core.js"></script>
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/jquery-ui-1.8.custom.min.js"></script>
+<script src="//cdn.ckeditor.com/4.7.0/standard/ckeditor.js"></script>
 
 <?php if(isset($_SESSION['username'])){ ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $_SESSION['DomainName']; ?>/css/chat.css" />
@@ -100,27 +101,15 @@ nav {background-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>;}
 			if($_SESSION['U_ID']==$_SESSION['current_Team_ID'] || $_SESSION['U_Admin']==1){
 		?>
 		<form method="post" name="form1" id="form1" action="<?php echo $editFormAction; ?>" >
-			
 		
-        <?php
-		if ($_SESSION['RichTextEditor'] == 0){
-			echo "<textarea name='CommishNotes' cols='50' rows='10'></textarea>";
-		} else {
-			// Include CKEditor class.
-			include_once "ckeditor/ckeditor.php";
-			// The initial value to be displayed in the editor.
-			$initialValue = '<p>This is some <strong>sample text</strong>.</p>';
-			// Create class instance.
-			$CKEditor = new CKEditor();
-			// Path to CKEditor directory, ideally instead of relative dir, use an absolute path:
-			//   $CKEditor->basePath = '/ckeditor/'
-			// If not set, CKEditor will try to detect the correct path.
-			$CKEditor->basePath = 'ckeditor/';
-			$CKEditor->config['width'] = 950;
-			// Create textarea element and attach CKEditor to it.
-			$CKEditor->editor("CommishNotes", $row_EditGM['CommishNotes']);
-		}
-		?>
+		<textarea name='CommishNotes' cols='50' rows='10'><?php echo $row_EditGM['CommishNotes']; ?></textarea>
+		
+		<script type="text/javascript" >
+		   
+				CKEDITOR.replace('CommishNotes',{
+					width: 950
+			});
+		</script>
 			
 		<div align="center"><Br /><input type="submit" value="Save Changes" class="button edit" /></div>
 		 <input type="hidden" name="MM_update" value="form1">

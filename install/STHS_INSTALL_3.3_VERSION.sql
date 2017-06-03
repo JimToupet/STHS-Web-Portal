@@ -693,6 +693,7 @@ CREATE TABLE `playersextensionoffers` (
   `Attempt` int(11) DEFAULT '0',
   `DateCreated` date DEFAULT NULL,
   `Type` varchar(10) NOT NULL DEFAULT 'Extension',
+  `PlayerType` varchar(10) NOT NULL DEFAULT 'player',
   PRIMARY KEY (`PR_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1059,7 +1060,7 @@ CREATE TABLE `statuslog` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `teamhistory` (
-  `ID` int(11) NOT NULL DEFAULT '0',
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Season_ID` int(11) DEFAULT '0',
   `Team` varchar(32) DEFAULT NULL,
   `Value` text,

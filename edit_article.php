@@ -167,6 +167,7 @@ $totalRows_GetArticle = mysql_num_rows($GetArticle);
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/jquery-ui-1.8.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo $_SESSION['DomainName']; ?>/js/date.js"></script>
+<script src="//cdn.ckeditor.com/4.7.0/standard/ckeditor.js"></script>
 
 <?php if(isset($_SESSION['username'])){ ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $_SESSION['DomainName']; ?>/css/chat.css" />
@@ -244,25 +245,15 @@ nav {background-color:#<?php echo $_SESSION['current_PrimaryColor']; ?>;}
 <div class="rowElem">
 <label for="CONTENT"><?php echo $l_Content;?>:</label>
 <div style="margin-left:140px;">
-<?php
-if ($_SESSION['RichTextEditor'] == 0){
-	echo "<textarea name='CONTENT' cols='50' rows='10'></textarea>";
-} else {
-	// Include CKEditor class.
-	include_once "ckeditor/ckeditor.php";
-	// The initial value to be displayed in the editor.
-	$initialValue = '<p>This is some <strong>sample text</strong>.</p>';
-	// Create class instance.
-	$CKEditor = new CKEditor();
-	// Path to CKEditor directory, ideally instead of relative dir, use an absolute path:
-	//   $CKEditor->basePath = '/ckeditor/'
-	// If not set, CKEditor will try to detect the correct path.
-	$CKEditor->basePath = 'ckeditor/';
-	$CKEditor->config['width'] = 800;
-	// Create textarea element and attach CKEditor to it.
-	$CKEditor->editor("CONTENT", $row_GetArticle['Content']);
-}
-?>
+<textarea name='CONTENT' cols='50' rows='10'><?php echo $row_GetArticle['Content'] ?></textarea>
+
+<script type="text/javascript" >
+		   
+		CKEDITOR.replace('CONTENT',{
+			width: 800
+	});
+</script>
+
 </div>
 </div>
 
